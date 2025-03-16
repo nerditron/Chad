@@ -16,8 +16,7 @@ import retextEnglish from 'retext-english'
 import remarkRetext from 'remark-retext'
 import rehypeRetext from 'rehype-retext'
 import vfileReporter from 'vfile-reporter'
-import retextEquality from 'retext-equality'
-import retextProfanities from 'retext-profanities'
+import retextAntiWoke from 'retext-anti-woke'
 import unifiedDiff from 'unified-diff'
 import {filter} from './filter.js'
 
@@ -46,7 +45,7 @@ notifier({pkg: pack}).notify()
 // Set-up meow.
 const cli = meow(
   [
-    'Usage: alex [<glob> ...] [options ...]',
+    'Usage: chad [<glob> ...] [options ...]',
     '',
     'Options:',
     '',
@@ -63,9 +62,9 @@ const cli = meow(
     'files in the current directory, `doc`, and `docs`.',
     '',
     'Examples',
-    '  $ echo "His network looks good" | alex --stdin',
-    '  $ alex *.md !example.md',
-    '  $ alex'
+    '  $ echo "His network looks good" | chad --stdin',
+    '  $ chad *.md !example.md',
+    '  $ chad'
   ].join('\n'),
   {
     importMeta: import.meta,
@@ -115,15 +114,15 @@ engine(
     configTransform: transform,
     out: false,
     output: false,
-    rcName: '.alexrc',
-    packageField: 'alex',
+    rcName: '.chadrc',
+    packageField: 'chad',
     color: Boolean(supportsColor.stderr),
     reporter: cli.flags.reporter || vfileReporter,
     reporterOptions: {
       verbose: cli.flags.why
     },
     quiet: cli.flags.quiet,
-    ignoreName: '.alexignore',
+    ignoreName: '.chadignore',
     silentlyIgnore,
     frail: true,
     defaultConfig: transform({})
@@ -141,8 +140,7 @@ function transform(options = {}) {
   /** @type {import('unified').PluggableList} */
   let plugins = [
     retextEnglish,
-    [retextProfanities, {sureness: options.profanitySureness}],
-    [retextEquality, {noBinary: options.noBinary}]
+    [retextAntiWoke, {noBinary: options.noBinary}]
   ]
 
   if (cli.flags.html) {

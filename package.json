@@ -1,5 +1,5 @@
 {
-  "name": "Chad",
+  "name": "chad",
   "version": "11.0.1",
   "description": "A linter to flag woke, communist, far-left phrasing",
   "license": "MIT",
@@ -80,7 +80,7 @@
     "remark-parse": "^10.0.0",
     "remark-retext": "^5.0.0",
     "retext-english": "^4.0.0",
-    "retext-anti-woke": "github:nerditron/retext-anti-woke",
+    "retext-anti-woke": "https://github.com/nerditron/retext-anti-woke/tarball/main",
     "supports-color": "^9.4.0",
     "unified": "^10.0.0",
     "unified-diff": "^4.0.0",
@@ -110,7 +110,8 @@
     "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
     "test-api": "node test/index.js",
     "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
-    "test": "npm run build && npm run format && npm run test-coverage"
+    "test": "npm run build && npm run format && npm run test-coverage",
+    "postinstall": "cd node_modules/retext-anti-woke && npm install --only=dev && npm run generate"
   },
   "alex": {
     "allow": [
