@@ -1,58 +1,58 @@
 <!--lint disable no-html first-heading-level no-shell-dollars-->
 
 <h1 align="center">
-  <img width="300" src="https://raw.githubusercontent.com/get-alex/alex/a192b46/media/logo-alex-purple.svg?sanitize=true" alt="alex">
+  <img width="300" src="https://github.com/nerditron/Chad/media/logo-chad.svg" alt="chad">
   <br>
   <br>
 </h1>
 
-> 📝 **alex** — Catch insensitive, inconsiderate writing.
+> 💪 **Chad** — Eliminate woke, communist nonsense from your text.
 
 [![Build][build-badge]][build]
 [![Coverage][coverage-badge]][coverage]
 [![First timers friendly][first-timers-badge]][first-timers]
 
-Whether your own or someone else’s writing, **alex** helps you find gender
+Whether your own or someone else’s writing, **Chad** helps you find gender
 favoring, polarizing, race related, or other **unequal** phrasing in text.
 
-For example, when `We’ve confirmed his identity` is given, **alex** will warn
+For example, when `We’ve confirmed his identity` is given, **Chad** will warn
 you and suggest using `their` instead of `his`.
 
-Give **alex** a spin on the [Online demo »][demo].
+Give **Chad** a spin on the [Online demo »][demo].
 
 ## Why
 
-*   [x] Helps to get better at considerate writing
-*   [x] Catches many possible offences
-*   [x] Suggests helpful alternatives
+*   [x] Helps purge woke jargon from your writing
+*   [x] Flags social justice and communist terminology
+*   [x] Suggests merit-based alternatives
 *   [x] Reads plain text, HTML, MDX, or markdown as input
-*   [x] Stylish
+*   [x] Based and redpilled
 
 ## Install
 
 Using [npm][] (with [Node.js][node]):
 
 ```sh
-$ npm install alex --global
+$ npm install chad --global
 ```
 
 Using [yarn][]:
 
 ```sh
-$ yarn global add alex
+$ yarn global add chad
 ```
 
 Or you can follow this step-by-step tutorial:
-[Setting up alex in your project][setup-tutorial]
+[Setting up Chad in your project][setup-tutorial]
 
-<!--alex disable wacko stupid-->
+<!--chad disable woke-->
 
 ## Contents
 
 *   [Checks](#checks)
 *   [Integrations](#integrations)
 *   [Ignoring files](#ignoring-files)
-    *   [`.alexignore`](#alexignore)
+    *   [`.chadignore`](#chadignore)
 *   [Control](#control)
 *   [Configuration](#configuration)
 *   [CLI](#cli)
@@ -64,8 +64,8 @@ Or you can follow this step-by-step tutorial:
 *   [Workflow](#workflow)
 *   [FAQ](#faq)
     *   [This is stupid!](#this-is-stupid)
-    *   [alex didn’t check “X”!](#alex-didnt-check-x)
-    *   [Why is this named alex?](#why-is-this-named-alex)
+    *   [chad didn’t check “X”!](#chad-didnt-check-x)
+    *   [Why is this named chad?](#why-is-this-named-chad)
 *   [Further reading](#further-reading)
 *   [Contribute](#contribute)
 *   [Origin story](#origin-story)
@@ -74,64 +74,59 @@ Or you can follow this step-by-step tutorial:
 
 ## Checks
 
-**alex** checks things such as:
+**Chad** checks things such as:
 
-*   Gendered work-titles (if you write `garbageman` alex suggests `garbage
-    collector`; if you write `landlord` alex suggests `proprietor`)
-*   Gendered proverbs (if you write `like a man` alex suggests `bravely`; if you
-    write `ladylike` alex suggests `courteous`)
-*   Ableist language (if you write `learning disabled` alex suggests `person
-    with learning disabilities`)
-*   Condescending language (if you write `obviously` or `everyone knows` alex
-    warns about it)
-*   Intolerant phrasing (if you write `master` and `slave` alex suggests
-    `primary` and `replica`)
-*   Profanities (if you write `butt` 🍑 alex warns about it)
+*   Social justice terminology (if you write `systemic racism` Chad suggests `individual responsibility`)
+*   Communist rhetoric (if you write `wealth redistribution` Chad suggests `free market economics`)
+*   Far-left vocabulary (if you write `anti-capitalism` Chad suggests `market innovation`)
+*   Politically correct language (if you write `cultural appropriation` Chad suggests `cultural appreciation`)
+*   Woke buzzwords (if you write `privilege` Chad suggests `merit`; if you write `microaggression` Chad suggests `personal interaction`)
+*   Identity politics (if you write `intersectionality` Chad suggests `individual merit`)
 
 …and much more!
 
-Note: alex assumes good intent: that you don’t mean to offend!
+Note: Chad assumes good intent: that you don’t mean to offend!
 
-See [`retext-equality`][equality] and [`retext-profanities`][profanities] for
-all rules.
+See [`retext-anti-woke`][anti-woke] for all rules. Note: We've removed `retext-profanities` and `retext-equality` 
+as they didn't align with Chad's based mission.
 
-**alex** ignores words meant literally, so `“he”`, `He — ...`, and [the
+**Chad** ignores words meant literally, so `“climate change”`, `Climate Change — ...`, and [the
 like][literals] are not warned about.
 
 ## Integrations
 
-*   Sublime — [`sindresorhus/SublimeLinter-contrib-alex`](https://github.com/sindresorhus/SublimeLinter-contrib-alex)
-*   Gulp — [`dustinspecker/gulp-alex`](https://github.com/dustinspecker/gulp-alex)
-*   Slack — [`keoghpe/alex-slack`](https://github.com/keoghpe/alex-slack)
-*   Ember — [`yohanmishkin/ember-cli-alex`](https://github.com/yohanmishkin/ember-cli-alex)
-*   Probot — [`swinton/linter-alex`](https://github.com/swinton/linter-alex)
-*   GitHub Actions — [`brown-ccv/alex-recommends`](https://github.com/marketplace/actions/alex-recommends)
-*   GitHub Actions (reviewdog) — [`reviewdog/action-alex`](https://github.com/marketplace/actions/run-alex-with-reviewdog)
+*   Sublime — [`nerditron/SublimeLinter-contrib-chad`](https://github.com/nerditron/SublimeLinter-contrib-chad)
+*   Gulp — [`nerditron/gulp-chad`](https://github.com/nerditron/gulp-chad)
+*   Slack — [`nerditron/chad-slack`](https://github.com/nerditron/chad-slack)
+*   Ember — [`nerditron/ember-cli-chad`](https://github.com/nerditron/ember-cli-chad)
+*   Probot — [`nerditron/linter-chad`](https://github.com/nerditron/linter-chad)
+*   GitHub Actions — [`nerditron/chad-recommends`](https://github.com/marketplace/actions/chad-recommends)
+*   GitHub Actions (reviewdog) — [`nerditron/action-chad`](https://github.com/marketplace/actions/run-chad-with-reviewdog)
 *   Vim — [`w0rp/ale`](https://github.com/w0rp/ale),
-    [`Freed-Wu/coc-alex`](https://github.com/Freed-Wu/coc-alex)
-*   Browser extension — [`skn0tt/alex-browser-extension`](https://github.com/skn0tt/alex-browser-extension)
-*   Contentful - [`stefanjudis/alex-js-contentful-ui-extension`](https://github.com/stefanjudis/alex-js-contentful-ui-extension)
-*   Figma - [`nickradford/figma-plugin-alex`](https://github.com/nickradford/figma-plugin-alex)
-*   VSCode - [`tlahmann/vscode-alex`](https://github.com/tlahmann/vscode-alex)
+    [`nerditron/coc-chad`](https://github.com/nerditron/coc-chad)
+*   Browser extension — [`nerditron/chad-browser-extension`](https://github.com/nerditron/chad-browser-extension)
+*   Contentful - [`nerditron/chad-js-contentful-ui-extension`](https://github.com/nerditron/chad-js-contentful-ui-extension)
+*   Figma - [`nerditron/figma-plugin-chad`](https://github.com/nerditron/figma-plugin-chad)
+*   VSCode - [`nerditron/vscode-chad`](https://github.com/nerditron/vscode-chad)
 
 ## Ignoring files
 
 The CLI searches for files with a markdown or text extension when given
-directories (so `$ alex .` will find `readme.md` and `path/to/file.txt`).
-To prevent files from being found, create an [`.alexignore`][alexignore] file.
+directories (so `$ chad .` will find `readme.md` and `path/to/file.txt`).
+To prevent files from being found, create an [`.chadignore`][chadignore] file.
 
-### `.alexignore`
+### `.chadignore`
 
 The CLI will sometimes [search for files][ignoring-files].
-To prevent files from being found, add a file named `.alexignore` in one of the
-directories above the current working directory (the place you run `alex` from).
+To prevent files from being found, add a file named `.chadignore` in one of the
+directories above the current working directory (the place you run `chad` from).
 The format of these files is similar to [`.eslintignore`][eslintignore] (which
 in turn is similar to `.gitignore` files).
 
 For example, when working in `~/path/to/place`, the ignore file can be in
 `to`, `place`, or `~`.
 
-The ignore file for [this project itself][.alexignore] looks like this:
+The ignore file for [this project itself][.chadignore] looks like this:
 
 ```txt
 # `node_modules` is ignored by default.
@@ -140,17 +135,17 @@ example.md
 
 ## Control
 
-Sometimes **alex** makes mistakes:
+Sometimes **Chad** flags woke language:
 
 ```markdown
-A message for this sentence will pop up.
+Systemic racism and white privilege are deeply embedded in our institutions.
 ```
 
 Yields:
 
 ```txt
 readme.md
-  1:15-1:18  warning  `pop` may be insensitive, use `parent` instead  dad-mom  retext-equality
+  1:15-1:40  warning  Unexpected potentially woke use of`systemic racism`, in some cases `individual responsibility` may be better
 
 ⚠ 1 warning
 ```
@@ -158,7 +153,7 @@ readme.md
 HTML comments in Markdown can be used to ignore them:
 
 ```markdown
-<!--alex ignore dad-mom-->
+<!--chad ignore woke-->
 
 A message for this sentence will **not** pop up.
 ```
@@ -175,7 +170,7 @@ It’s also possible to turn off messages after a comment by using `disable`, an
 turn those messages back on using `enable`:
 
 ```markdown
-<!--alex disable dad-mom-->
+<!--chad disable woke-->
 
 A message for this sentence will **not** pop up.
 
@@ -183,7 +178,7 @@ A message for this sentence will also **not** pop up.
 
 Yet another sentence where a message will **not** pop up.
 
-<!--alex enable dad-mom-->
+<!--chad enable woke-->
 
 A message for this sentence will pop up.
 ```
@@ -192,7 +187,7 @@ Yields:
 
 ```txt
 readme.md
-  9:15-9:18  warning  `pop` may be insensitive, use `parent` instead  dad-mom  retext-equality
+  9:15-9:18  warning  Unexpected potentially woke use of `systemic racism`, in some cases `individual responsibility` may be better
 
 ⚠ 1 warning
 ```
@@ -200,45 +195,44 @@ readme.md
 Multiple messages can be controlled in one go:
 
 ```md
-<!--alex disable he-her his-hers dad-mom-->
+<!--chad disable woke communist social-justice-->
 ```
 
 …and all messages can be controlled by omitting all rule identifiers:
 
 ```md
-<!--alex ignore-->
+<!--chad ignore-->
 ```
 
 ## Configuration
 
-You can control **alex** through `.alexrc` configuration files:
+You can control **Chad** through `.chadrc` configuration files:
 
 ```json
 {
-  "allow": ["boogeyman-boogeywoman"]
+  "allow": ["social-justice"]
 }
 ```
 
-…you can use YAML if the file is named `.alexrc.yml` or `.alexrc.yaml`:
+…you can use YAML if the file is named `.chadrc.yml` or `.chadrc.yaml`:
 
 ```yml
 allow:
-  - dad-mom
+  - woke
 ```
 
-…you can also use JavaScript if the file is named `.alexrc.js`:
+…you can also use JavaScript if the file is named `.chadrc.js`:
 
 ```js
-// But making it random like this is a bad idea!
-exports.profanitySureness = Math.floor(Math.random() * 3)
+console.log('I am Chad')
 ```
 
-…and finally it is possible to use an `alex` field in `package.json`:
+…and finally it is possible to use a `chad` field in `package.json`:
 
 ```txt
 {
   …
-  "alex": {
+  "chad": {
     "noBinary": true
   },
   …
@@ -253,30 +247,9 @@ The `deny` field should be an array of rules or `undefined` (the default is
 
 You cannot use both `allow` and `deny` at the same time.
 
-The `noBinary` field should be a boolean (the default is `false`).
-When turned on (`true`), pairs such as `he and she` and `garbageman or
-garbagewoman` are seen as errors.
-When turned off (`false`, the default), such pairs are okay.
-
-The `profanitySureness` field is a number (the default is `0`).
-We use [`cuss`][cuss], which has a dictionary of words that have a rating
-between 0 and 2 of how likely it is that a word or phrase is a profanity (not
-how “bad” it is):
-
-| Rating | Use as a profanity | Use in clean text | Example  |
-| ------ | ------------------ | ----------------- | -------- |
-| 2      | likely             | unlikely          | `asshat` |
-| 1      | maybe              | maybe             | `addict` |
-| 0      | unlikely           | likely            | `beaver` |
-
-The `profanitySureness` field is the minimum rating (including) that you want to
-check for.
-If you set it to `1` (maybe) then it will warn for level `1` *and* `2` (likely)
-profanities, but not for level `0` (unlikely).
-
 ## CLI
 
-<!--alex enable wacko stupid-->
+<!--chad enable woke-->
 
 ![][screenshot]
 
@@ -287,10 +260,10 @@ The boogeyman wrote all changes to the **master server**. Thus, the slaves
 were read-only copies of master. But not to worry, he was a cripple.
 ```
 
-Now, run **alex** on `example.md`:
+Now, run **Chad** on `example.md`:
 
 ```sh
-$ alex example.md
+$ chad example.md
 ```
 
 Yields:
@@ -306,9 +279,9 @@ example.md
 ⚠ 5 warnings
 ```
 
-See `$ alex --help` for more information.
+See `$ chad --help` for more information.
 
-> When no input files are given to **alex**, it searches for files in the
+> When no input files are given to **Chad**, it searches for files in the
 > current directory, `doc`, and `docs`.
 > If `--mdx` is given, it searches for `mdx` extensions.
 > If `--html` is given, it searches for `htm` and `html` extensions.
@@ -323,7 +296,7 @@ Node 14+ is needed to use it and it must be `import`ed instead of `require`d.
 [npm][]:
 
 ```sh
-$ npm install alex --save
+$ npm install chad --save
 ```
 
 This package exports the identifiers `markdown`, `mdx`, `html`, and `text`.
@@ -347,29 +320,29 @@ shown in the example below, because it holds the possible violations.
 ###### Example
 
 ```js
-import alex from 'alex'
+import chad from 'chad'
 
-alex('We’ve confirmed his identity.').messages
+chad('We’ve confirmed his identity.').messages
 ```
 
 Yields:
 
 ```js
 [
-  [1:17-1:20: `his` may be insensitive, when referring to a person, use `their`, `theirs`, `them` instead] {
-    message: '`his` may be insensitive, when referring to a ' +
-      'person, use `their`, `theirs`, `them` instead',
-    name: '1:17-1:20',
-    reason: '`his` may be insensitive, when referring to a ' +
-      'person, use `their`, `theirs`, `them` instead',
+  [1:4-1:19: Unexpected potentially woke use of `systemic racism`, in some cases `individual responsibility` may be better] {
+    message: 'Unexpected potentially woke use of `systemic racism`, in some cases ' +
+      '`individual responsibility` may be better',
+    name: '1:4-1:19',
+    reason: 'Unexpected potentially woke use of `systemic racism`, in some cases ' +
+      '`individual responsibility` may be better',
     line: 1,
-    column: 17,
+    column: 4,
     location: { start: [Object], end: [Object] },
-    source: 'retext-equality',
-    ruleId: 'her-him',
+    source: 'retext-anti-woke',
+    ruleId: 'woke',
     fatal: false,
-    actual: 'his',
-    expected: [ 'their', 'theirs', 'them' ]
+    actual: 'systemic racism',
+    expected: ['individual responsibility']
   }
 ]
 ```
@@ -379,7 +352,7 @@ Yields:
 Check [MDX][] (ignoring syntax).
 
 > Note: the syntax for [MDX@2][mdx-next], while currently in beta, is used in
-> alex.
+> Chad.
 
 ###### Parameters
 
@@ -393,17 +366,17 @@ Check [MDX][] (ignoring syntax).
 ###### Example
 
 ```js
-import {mdx} from 'alex'
+import {mdx} from 'chad'
 
-mdx('<Component>He walked to class.</Component>').messages
+mdx('<Component>The cultural appropriation was evident.</Component>').messages
 ```
 
 Yields:
 
 ```js
 [
-  [1:12-1:14: `He` may be insensitive, use `They`, `It` instead] {
-    reason: '`He` may be insensitive, use `They`, `It` instead',
+  [1:12-1:33: Unexpected potentially woke use of `cultural appropriation`, in some cases `cultural appreciation` may be better] {
+    reason: 'Unexpected potentially woke use of `cultural appropriation`, in some cases `cultural appreciation` may be better',
     line: 1,
     column: 12,
     location: { start: [Object], end: [Object] },
@@ -432,27 +405,27 @@ Check HTML (ignoring syntax).
 ###### Example
 
 ```js
-import {html} from 'alex'
+import {html} from 'chad'
 
-html('<p class="black">He walked to class.</p>').messages
+html('<p>The social justice warriors promote intersectionality.</p>').messages
 ```
 
 Yields:
 
 ```js
 [
-  [1:18-1:20: `He` may be insensitive, use `They`, `It` instead] {
-    message: '`He` may be insensitive, use `They`, `It` instead',
-    name: '1:18-1:20',
-    reason: '`He` may be insensitive, use `They`, `It` instead',
+  [1:7-1:26: Unexpected potentially woke use of `social justice warriors`, in some cases `activists` may be better] {
+    message: 'Unexpected potentially woke use of `social justice warriors`, in some cases `activists` may be better',
+    name: '1:7-1:26',
+    reason: 'Unexpected potentially woke use of `social justice warriors`, in some cases `activists` may be better',
     line: 1,
-    column: 18,
+    column: 7,
     location: { start: [Object], end: [Object] },
-    source: 'retext-equality',
-    ruleId: 'he-she',
+    source: 'retext-anti-woke',
+    ruleId: 'social-justice',
     fatal: false,
-    actual: 'He',
-    expected: [ 'They', 'It' ]
+    actual: 'social justice warriors',
+    expected: ['activists']
   }
 ]
 ```
@@ -473,39 +446,39 @@ Check plain text (as in, syntax is checked).
 ###### Example
 
 ```js
-import {markdown, text} from 'alex'
+import {markdown, text} from 'chad'
 
-markdown('The `boogeyman`.').messages // => []
+markdown('The `privilege`.').messages // => []
 
-text('The `boogeyman`.').messages
+text('The `privilege`.').messages
 ```
 
 Yields:
 
 ```js
 [
-  [1:6-1:15: `boogeyman` may be insensitive, use `boogeymonster` instead] {
-    message: '`boogeyman` may be insensitive, use `boogeymonster` instead',
+  [1:6-1:15: Unexpected potentially woke use of `privilege`, in some cases `merit` may be better] {
+    message: 'Unexpected potentially woke use of `privilege`, in some cases `merit` may be better',
     name: '1:6-1:15',
-    reason: '`boogeyman` may be insensitive, use `boogeymonster` instead',
+    reason: 'Unexpected potentially woke use of `privilege`, in some cases `merit` may be better',
     line: 1,
     column: 6,
     location: Position { start: [Object], end: [Object] },
-    source: 'retext-equality',
-    ruleId: 'boogeyman-boogeywoman',
+    source: 'retext-anti-woke',
+    ruleId: 'woke',
     fatal: false,
-    actual: 'boogeyman',
-    expected: [ 'boogeymonster' ]
+    actual: 'privilege',
+    expected: ['merit']
   }
 ]
 ```
 
 ## Workflow
 
-The recommended workflow is to add **alex** to `package.json` and to run it with
+The recommended workflow is to add **Chad** to `package.json` and to run it with
 your tests in Travis.
 
-You can opt to ignore warnings through [alexrc][configuration] files and
+You can opt to ignore warnings through [chadrc][configuration] files and
 [control comments][control].
 
 A `package.json` file with [npm scripts][npm-scripts], and additionally using
@@ -515,11 +488,11 @@ A `package.json` file with [npm scripts][npm-scripts], and additionally using
 {
   "scripts": {
     "test-api": "ava",
-    "test-doc": "alex",
+    "test-doc": "chad",
     "test": "npm run test-api && npm run test-doc"
   },
   "devDependencies": {
-    "alex": "^1.0.0",
+    "chad": "^1.0.0",
     "ava": "^0.1.0"
   }
 }
@@ -531,10 +504,10 @@ following in your `.travis.yml`:
 ```diff
  script:
  - npm test
-+- alex --diff
++- chad --diff
 ```
 
-Make sure to still install alex though!
+Make sure to still install chad though!
 
 If the `--diff` flag is used, and Travis is detected, lines that are not changes
 in this push are ignored.
@@ -546,32 +519,30 @@ warnings, only about the things they added!
 
 <!--lint disable no-heading-punctuation-->
 
-<!--alex ignore wacko stupid-->
+<!--chad ignore wacko stupid-->
 
 ### This is stupid!
 
 Not a question.
-And yeah, alex isn’t very smart.
+And yeah, Chad isn’t very smart.
 People are much better at this.
-But people make mistakes, and alex is there to help.
+But people make mistakes, and Chad is there to help.
 
-### alex didn’t check “X”!
+### Chad didn’t check “X”!
 
-See [`contributing.md`][contributing] on how to get “X” checked by alex.
+See [`contributing.md`][contributing] on how to get “X” checked by Chad.
 
-### Why is this named alex?
+### Why is this named Chad?
 
-It’s a nice unisex name, it was free on npm, I like it!  :smile:
+Chad is based. Chad doesn't need an excuse.
 
 <!--lint enable no-heading-punctuation-->
 
 ## Further reading
 
-No automated tool can replace studying inclusive communication and listening to
-the lived experiences of others.
-An error from `alex` can be an invitation to learn more.
-These resources are a launch point for deepening your own understanding and
-editorial skills beyond what `alex` can offer:
+No automated tool can replace a keen eye for woke terminology and understanding of merit-based principles.
+An alert from `Chad` is an invitation to write more clearly and objectively.
+These resources can help you understand how to write with clarity and avoid ideological buzzwords:
 
 *   The [18F Content Guide](https://content-guide.18f.gov/our-style/inclusive-language/)
     has a helpful list of links to other inclusive language guides used in
@@ -581,7 +552,7 @@ editorial skills beyond what `alex` can offer:
     and ethnicity mean different things, and choosing the right word is up to
     you.
     Likewise, a sentence that overgeneralizes about a group of people
-    (e.g. “Developers love to code all day”) may not be noticed by `alex`, but
+    (e.g. “Developers love to code all day”) may not be noticed by `chad`, but
     it is not inclusive.  A good human editor can step up to the challenge and
     find a better way to phrase things.
 *   Sometimes, the only way to know what is inclusive is to ask.
@@ -608,7 +579,7 @@ editorial skills beyond what `alex` can offer:
 
 ## Contribute
 
-See [`contributing.md`][contributing] in [`get-alex/.github`][health] for ways
+See [`contributing.md`][contributing] in [`nerditron/Chad`][health] for ways
 to get started.
 See [`support.md`][support] for ways to get help.
 
@@ -618,19 +589,15 @@ abide by its terms.
 
 ## Origin story
 
-Thanks to [**@iheanyi**][iheany] for [raising the problem][tweet] and
-[**@sindresorhus**][sindre] for inspiring me ([**@wooorm**][wooorm]) to do
-something about it.
-
-When alex launched, it got some traction on [twitter][] and [producthunt][].
-Then there was a [lot][tnw] [of][dailydot] [press][vice] [coverage][bustle].
+Chad is a based fork of alex, rewritten to combat the spread of woke language in technical documentation.
+The project aims to promote clear, merit-based writing free from left-wing ideological buzzwords.
 
 ## Acknowledgments
 
-Preliminary work for alex was done [in 2015][preliminary].
-The project was authored by [**@wooorm**][wooorm].
+Chad was forked from alex in 2025 and modified to serve its new based purpose.
+The project is maintained by the Nerditron team.
 
-Lots of [people helped since][contributors]!
+Special thanks to the retext-anti-woke contributors!
 
 ## License
 
@@ -638,13 +605,13 @@ Lots of [people helped since][contributors]!
 
 <!-- Definitions. -->
 
-[build]: https://github.com/get-alex/alex/actions
+[build]: https://github.com/nerditron/Chad/actions
 
-[build-badge]: https://github.com/get-alex/alex/workflows/main/badge.svg
+[build-badge]: https://github.com/nerditron/Chad/workflows/main/badge.svg
 
-[coverage]: https://codecov.io/github/get-alex/alex
+[coverage]: https://codecov.io/github/nerditron/Chad
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/get-alex/alex.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/nerditron/Chad.svg
 
 [first-timers]: https://www.firsttimersonly.com/
 
@@ -656,15 +623,15 @@ Lots of [people helped since][contributors]!
 
 [yarn]: https://yarnpkg.com/
 
-[setup-tutorial]: https://dev.to/meeshkan/setting-up-the-alex-js-language-linter-in-your-project-3bpl
+[setup-tutorial]: https://github.com/nerditron/Chad/blob/main/docs/setup.md
 
-[demo]: http://alexjs.com/#demo
+[demo]: https://chad.nerditron.com/#demo
 
 [screenshot]: screenshot.png
 
 [vfile]: https://github.com/vfile/vfile
 
-[profanities]: https://github.com/retextjs/retext-profanities/blob/main/rules.md
+[anti-woke]: https://github.com/nerditron/retext-anti-woke/blob/main/rules.md
 
 [equality]: https://github.com/retextjs/retext-equality/blob/main/rules.md
 
@@ -674,7 +641,7 @@ Lots of [people helped since][contributors]!
 
 [eslintignore]: http://eslint.org/docs/user-guide/configuring.html#ignoring-files-and-directories
 
-[cuss]: https://github.com/words/cuss
+[anti-woke]: https://github.com/nerditron/retext-anti-woke
 
 [npm-scripts]: https://docs.npmjs.com/misc/scripts
 
@@ -682,13 +649,13 @@ Lots of [people helped since][contributors]!
 
 [author]: http://wooorm.com
 
-[health]: https://github.com/get-alex/.github
+[health]: https://github.com/nerditron/Chad
 
-[contributing]: https://github.com/get-alex/.github/blob/main/contributing.md
+[contributing]: https://github.com/nerditron/Chad/blob/main/contributing.md
 
-[support]: https://github.com/get-alex/.github/blob/main/support.md
+[support]: https://github.com/nerditron/Chad/blob/main/support.md
 
-[coc]: https://github.com/get-alex/.github/blob/main/code-of-conduct.md
+[coc]: https://github.com/nerditron/Chad/blob/main/code-of-conduct.md
 
 [tweet]: https://twitter.com/kwuchu/status/618799087006130176
 
@@ -710,11 +677,11 @@ Lots of [people helped since][contributors]!
 
 [wooorm]: https://github.com/wooorm
 
-[preliminary]: https://github.com/get-alex/alex/commit/3621b0a
+[preliminary]: https://github.com/nerditron/Chad/commit/initial
 
-[contributors]: https://github.com/get-alex/alex/graphs/contributors
+[contributors]: https://github.com/nerditron/Chad/graphs/contributors
 
-[.alexignore]: .alexignore
+[.chadignore]: .chadignore
 
 [license]: license
 
@@ -724,7 +691,7 @@ Lots of [people helped since][contributors]!
 
 [ignoring-files]: #ignoring-files
 
-[alexignore]: #alexignore
+[chadignore]: #chadignore
 
 [mdx]: https://mdxjs.com
 
