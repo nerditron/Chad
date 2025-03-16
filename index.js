@@ -3,11 +3,10 @@
  * @typedef {import('./filter.js').Options} FilterOptions
  *
  * @typedef {boolean|undefined} NoBinaryOption
- * @typedef {0|1|2|undefined} SurenessOption
  *
- * @typedef {{noBinary: NoBinaryOption, sureness: SurenessOption}} TextOptions
+ * @typedef {{noBinary: NoBinaryOption}} TextOptions
  *
- * @typedef {{noBinary?: NoBinaryOption, profanitySureness?: SurenessOption} & FilterOptions} OptionsObject
+ * @typedef {{noBinary?: NoBinaryOption} & FilterOptions} OptionsObject
  * @typedef {import('vfile').VFileCompatible} Input
  * @typedef {OptionsObject|string[]|undefined} Options
  */
@@ -20,8 +19,7 @@ import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdx from 'remark-mdx'
 import rehypeParse from 'rehype-parse'
 import retextEnglish from 'retext-english'
-import retextEquality from 'retext-equality'
-import retextProfanities from 'retext-profanities'
+import retextAntiWoke from 'retext-anti-woke'
 import remarkRetext from 'remark-retext'
 import rehypeRetext from 'rehype-retext'
 import {sort} from 'vfile-sort'
@@ -31,12 +29,11 @@ import {filter} from './filter.js'
 function makeText(options) {
   return unified()
     .use(retextEnglish)
-    .use(retextEquality, options)
-    .use(retextProfanities, options)
+    .use(retextAntiWoke, options)
 }
 
 /**
- * Alex’s core.
+ * Chad’s core.
  *
  * @param {Input} value
  * @param {FilterOptions} options
@@ -56,7 +53,7 @@ function core(value, options, processor) {
 export default markdown
 
 /**
- * Alex (markdown).
+ * Chad (markdown).
  *
  * @param {Input} value
  * @param {Options} [config]
@@ -128,8 +125,6 @@ function splitOptions(options) {
   let deny
   /** @type {boolean|undefined} */
   let noBinary
-  /** @type {SurenessOption} */
-  let sureness
 
   if (Array.isArray(options)) {
     allow = options
@@ -137,8 +132,7 @@ function splitOptions(options) {
     allow = options.allow
     deny = options.deny
     noBinary = options.noBinary
-    sureness = options.profanitySureness
   }
 
-  return {filter: {allow, deny}, text: {noBinary, sureness}}
+  return {filter: {allow, deny}, text: {noBinary}}
 }
