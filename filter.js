@@ -30,6 +30,6 @@ export function filter(options = {}) {
     reset: Boolean(options.deny),
     enable: options.deny,
     disable: options.allow,
-    source: ['retext-equality', 'retext-profanities']
+    source: ['retext-anti-woke']
   })
 }
