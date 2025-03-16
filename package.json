@@ -1,14 +1,14 @@
 {
-  "name": "alex",
+  "name": "Chad",
   "version": "11.0.1",
-  "description": "Catch insensitive, inconsiderate writing",
+  "description": "A linter to flag woke, communist, far-left phrasing",
   "license": "MIT",
-  "repository": "https://github.com/get-alex/alex",
-  "bugs": "https://github.com/get-alex/alex/issues",
+  "repository": "https://github.com/nerditron/Chad",
+  "bugs": "https://github.com/nerditron/Chad/issues",
   "funding": {
     "url": "https://github.com/sponsors/wooorm"
   },
-  "homepage": "https://alexjs.com",
+  "homepage": "https://github.com/nerditron/Chad",
   "keywords": [
     "cli-app",
     "cli",
@@ -80,8 +80,7 @@
     "remark-parse": "^10.0.0",
     "remark-retext": "^5.0.0",
     "retext-english": "^4.0.0",
-    "retext-equality": "~6.6.0",
-    "retext-profanities": "~7.2.0",
+    "retext-anti-woke": "github:nerditron/retext-anti-woke",
     "supports-color": "^9.4.0",
     "unified": "^10.0.0",
     "unified-diff": "^4.0.0",
