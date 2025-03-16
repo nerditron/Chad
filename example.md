@@ -1,8 +1,16 @@
-The boogeyman wrote all changes to the **master server**.  Thus, the slaves
-were read-only copies of master.  But not to worry, he was a cripple.
+# Chad Example
 
-Eric is pretty set on beating your butt for sheriff.
+This file demonstrates how Chad flags “woke” terms in Markdown content.
 
-Check this file by running `./cli.js example.md`.  It should not warn
-for `boogeyman` above as it’s in `.alexrc`.  Neither should it warn
-for `butt`, as it’s in `package.json`.
+## Example Content
+
+The following sentence contains terms that Chad will identify as “woke”:
+
+“We must fight for social justice and address privilege in our society.”
+
+## Running Chad
+
+To see Chad flag the “woke” terms, run:
+
+```sh
+./cli.js example.md
