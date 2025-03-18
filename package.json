@@ -111,7 +111,7 @@
     "test-api": "node test/index.js",
     "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
     "test": "npm run build && npm run format && npm run test-coverage",
-    "postinstall": "cd node_modules/retext-anti-woke && npm install --only=dev && npm run generate"
+    "postinstall": "cd node_modules/retext-anti-woke && npm install && npm run generate"
   },
   "alex": {
     "allow": [

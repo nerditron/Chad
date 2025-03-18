@@ -3,322 +3,186 @@ import {URL} from 'node:url'
 import test from 'tape'
 import alex, {markdown, mdx, text, html} from '../index.js'
 
+// Load fixture files for html() and mdx() tests
 const threeHtml = fs.readFileSync(
   new URL('fixtures/three.html', import.meta.url)
 )
 const fourMdx = fs.readFileSync(new URL('fixtures/four.mdx', import.meta.url))
 
-// Tests. Note that these are small because alex is in fact
-// just a collection of well-tested modules.
-// See `retextjs/retext-equality` for the gist of what
-// warnings are exposed.
-test('alex()', function (t) {
+// Tests for Chad’s API. These are concise because Chad relies on well-tested
+// modules like `retext-anti-woke`. See `retext-anti-woke` for the full list
+// of flagged terms and suggestions.
+test('chad()', function (t) {
+  // Basic test: Check if Chad flags "woke" terms in Markdown
   t.deepEqual(
     alex(
       [
-        'The `boogeyman` wrote all changes to the **master server**. Thus,',
-        'the slaves were read-only copies of master. But not to worry,',
-        'he was a _cripple_.',
-        '',
-        'Eric is pretty set on beating your butt for the sheriff.'
+        'We must fight for social justice and address privilege.',
+        'The class struggle is real.'
       ].join('\n')
     ).messages.map(String),
     [
-      '1:44-1:50: `master` may be insensitive, use `primary`, `lead`, `hub`, `reference` instead',
-      '2:5-2:11: `slaves` may be insensitive, use `secondaries`, `workers`, `replicas`, `nodes` instead',
-      '2:5-2:11: Don’t use `slaves`, it’s profane',
-      '2:37-2:43: `master` may be insensitive, use `primary`, `lead`, `hub`, `reference` instead',
-      '3:1-3:3: `he` may be insensitive, use `they`, `it` instead',
-      '3:11-3:18: `cripple` may be insensitive, use `person with a limp` instead',
-      '5:36-5:40: Be careful with `butt`, it’s profane in some cases'
+      '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better',
+      '1:46-1:55: Unexpected potentially woke use of `privilege`, in some cases `merit` may be better',
+      '2:5-2:19: Unexpected potentially woke use of `class struggle`, in some cases `competition` may be better'
     ],
     'should work'
   )
 
+  // Test with allow array: Skip specific "woke" terms
   t.deepEqual(
     alex(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      ['butt']
+      'We must fight for social justice and address privilege.',
+      ['privilege']
     ).messages.map(String),
     [
-      '1:5-1:14: `boogeyman` may be insensitive, use `boogeymonster` instead',
-      '1:31-1:37: Don’t use `asshat`, it’s profane'
+      '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
     ],
     'should work with allow array'
   )
 
+  // Test with allow config: Same as above but with object syntax
   t.deepEqual(
     alex(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {allow: ['butt']}
+      'We must fight for social justice and address privilege.',
+      {allow: ['privilege']}
     ).messages.map(String),
     [
-      '1:5-1:14: `boogeyman` may be insensitive, use `boogeymonster` instead',
-      '1:31-1:37: Don’t use `asshat`, it’s profane'
+      '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
     ],
     'should work with allow config'
   )
 
+  // Test with deny config: Only flag specified "woke" terms
   t.deepEqual(
     alex(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {
-        deny: ['butt']
-      }
+      'We must fight for social justice and address privilege.',
+      {deny: ['social-justice']}
     ).messages.map(String),
-    ['1:52-1:56: Be careful with `butt`, it’s profane in some cases'],
+    [
+      '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
+    ],
     'should work with deny config'
   )
 
+  // Test error handling: Throw when both allow and deny are provided
   t.throws(function () {
     alex(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {
-        allow: ['asshat'],
-        deny: ['boogeyman-boogeywoman']
-      }
+      'We must fight for social justice and address privilege.',
+      {allow: ['privilege'], deny: ['social-justice']}
     )
   }, 'should throw an error with allow and deny config')
 
-  t.deepEqual(
-    alex(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {
-        profanitySureness: 1
-      }
-    ).messages.map(String),
-    [
-      '1:5-1:14: `boogeyman` may be insensitive, use `boogeymonster` instead',
-      '1:31-1:37: Don’t use `asshat`, it’s profane'
-    ],
-    'should work with profanity config'
-  )
-
-  t.deepEqual(
-    alex(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {
-        allow: ['asshat'],
-        profanitySureness: 1
-      }
-    ).messages.map(String),
-    ['1:5-1:14: `boogeyman` may be insensitive, use `boogeymonster` instead'],
-    'should work with allow and profanity config'
-  )
-
-  t.deepEqual(
-    alex(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {
-        deny: ['boogeyman-boogeywoman'],
-        profanitySureness: 1
-      }
-    ).messages.map(String),
-    ['1:5-1:14: `boogeyman` may be insensitive, use `boogeymonster` instead'],
-    'should work with deny and profanity config'
-  )
-
+  // Verify markdown alias
   t.deepEqual(markdown, alex, 'markdown is an alias of alex')
 
+  // Test plain text processing
   t.deepEqual(
     text(
-      [
-        'The `boogeyman` wrote all changes to the **master server**. Thus,',
-        'the slaves were read-only copies of master. But not to worry,',
-        'he was a _cripple_.',
-        '',
-        'Eric is pretty set on beating your butt for the sheriff.'
-      ].join('\n')
+      'We must fight for social justice and address privilege.'
     ).messages.map(String),
     [
-      '1:6-1:15: `boogeyman` may be insensitive, use `boogeymonster` instead',
-      '1:44-1:50: `master` may be insensitive, use `primary`, `lead`, `hub`, `reference` instead',
-      '2:5-2:11: `slaves` may be insensitive, use `secondaries`, `workers`, `replicas`, `nodes` instead',
-      '2:5-2:11: Don’t use `slaves`, it’s profane',
-      '2:37-2:43: `master` may be insensitive, use `primary`, `lead`, `hub`, `reference` instead',
-      '3:1-3:3: `he` may be insensitive, use `they`, `it` instead',
-      '3:11-3:18: `cripple` may be insensitive, use `person with a limp` instead',
-      '5:36-5:40: Be careful with `butt`, it’s profane in some cases'
+      '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better',
+      '1:46-1:55: Unexpected potentially woke use of `privilege`, in some cases `merit` may be better'
     ],
-    'text()'
+    'text(), plain processing'
   )
 
+  // Test plain text with allow array
   t.deepEqual(
     text(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      ['butt']
+      'We must fight for social justice and address privilege.',
+      ['privilege']
     ).messages.map(String),
     [
-      '1:5-1:14: `boogeyman` may be insensitive, use `boogeymonster` instead',
-      '1:31-1:37: Don’t use `asshat`, it’s profane'
+      '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
     ],
     'text() with allow array'
   )
 
+  // Test plain text with allow config
   t.deepEqual(
     text(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {allow: ['butt']}
+      'We must fight for social justice and address privilege.',
+      {allow: ['privilege']}
     ).messages.map(String),
     [
-      '1:5-1:14: `boogeyman` may be insensitive, use `boogeymonster` instead',
-      '1:31-1:37: Don’t use `asshat`, it’s profane'
+      '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
     ],
-    'text() with allow config'
+    'text() with allow config, object syntax'
   )
 
+  // Test plain text with deny config
   t.deepEqual(
     text(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {
-        deny: ['butt']
-      }
+      'We must fight for social justice and address privilege.',
+      {deny: ['social-justice']}
     ).messages.map(String),
-    ['1:52-1:56: Be careful with `butt`, it’s profane in some cases'],
+    [
+      '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
+    ],
     'text() with deny config'
   )
 
+  // Test error handling in text()
   t.throws(function () {
     text(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {
-        allow: ['asshat'],
-        deny: ['boogeyman-boogeywoman']
-      }
+      'We must fight for social justice and address privilege.',
+      {allow: ['privilege'], deny: ['social-justice']}
     )
   }, 'text() with allow and deny config')
 
-  t.deepEqual(
-    text(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {profanitySureness: 1}
-    ).messages.map(String),
-    [
-      '1:5-1:14: `boogeyman` may be insensitive, use `boogeymonster` instead',
-      '1:31-1:37: Don’t use `asshat`, it’s profane'
-    ],
-    'text() with profanity config'
-  )
-
-  t.deepEqual(
-    text(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {
-        allow: ['asshat'],
-        profanitySureness: 1
-      }
-    ).messages.map(String),
-    ['1:5-1:14: `boogeyman` may be insensitive, use `boogeymonster` instead'],
-    'text() with allow and profanity config'
-  )
-
-  t.deepEqual(
-    text(
-      'The boogeyman asked Eric, the asshat, to beat your butt for the sheriff.',
-      {
-        deny: ['boogeyman-boogeywoman'],
-        profanitySureness: 1
-      }
-    ).messages.map(String),
-    ['1:5-1:14: `boogeyman` may be insensitive, use `boogeymonster` instead'],
-    'text() with deny and profanity config'
-  )
-
+  // Test HTML processing: Assumes three.html will be updated to "Class struggle persists."
   t.deepEqual(
     html(threeHtml).messages.map(String),
     [
-      '17:22-17:24: `He` may be insensitive, use `They`, `It` instead',
-      '18:5-18:8: `She` may be insensitive, use `They`, `It` instead',
-      '18:36-18:42: Don’t use `asshat`, it’s profane',
-      '18:74-18:78: Be careful with `butt`, it’s profane in some cases'
+      '17:22-17:35: `class struggle` may be woke, try `economic competition` instead'
     ],
     'html()'
   )
 
+  // Test HTML with allow array
   t.deepEqual(
-    html(threeHtml, ['butt']).messages.map(String),
-    [
-      '17:22-17:24: `He` may be insensitive, use `They`, `It` instead',
-      '18:5-18:8: `She` may be insensitive, use `They`, `It` instead',
-      '18:36-18:42: Don’t use `asshat`, it’s profane'
-    ],
+    html(threeHtml, ['class-struggle']).messages.map(String),
+    [],
     'html() with allow array'
   )
 
+  // Test HTML with allow config
   t.deepEqual(
-    html(threeHtml, {allow: ['butt']}).messages.map(String),
-    [
-      '17:22-17:24: `He` may be insensitive, use `They`, `It` instead',
-      '18:5-18:8: `She` may be insensitive, use `They`, `It` instead',
-      '18:36-18:42: Don’t use `asshat`, it’s profane'
-    ],
+    html(threeHtml, {allow: ['class-struggle']}).messages.map(String),
+    [],
     'html() with allow config'
   )
 
+  // Test HTML with deny config
   t.deepEqual(
-    html(threeHtml, {
-      deny: ['butt']
-    }).messages.map(String),
-    ['18:74-18:78: Be careful with `butt`, it’s profane in some cases'],
+    html(threeHtml, {deny: ['class-struggle']}).messages.map(String),
+    ['17:22-17:35: `class struggle` may be woke, try `economic competition` instead'],
     'html() with deny config'
   )
 
+  // Test error handling in html()
   t.throws(function () {
-    html(threeHtml, {
-      allow: ['he-she'],
-      deny: ['butt']
-    })
+    html(threeHtml, {allow: ['class-struggle'], deny: ['other-rule']})
   }, 'html() with allow and deny config')
 
-  t.deepEqual(
-    html(threeHtml, {profanitySureness: 1}).messages.map(String),
-    [
-      '17:22-17:24: `He` may be insensitive, use `They`, `It` instead',
-      '18:5-18:8: `She` may be insensitive, use `They`, `It` instead',
-      '18:36-18:42: Don’t use `asshat`, it’s profane'
-    ],
-    'html() with profanity config'
-  )
-
-  t.deepEqual(
-    html(threeHtml, {
-      allow: ['he-she'],
-      profanitySureness: 1
-    }).messages.map(String),
-    ['18:36-18:42: Don’t use `asshat`, it’s profane'],
-    'html() with allow and profanity config'
-  )
-
-  t.deepEqual(
-    html(threeHtml, {
-      deny: ['he-she'],
-      profanitySureness: 1
-    }).messages.map(String),
-    [
-      '17:22-17:24: `He` may be insensitive, use `They`, `It` instead',
-      '18:5-18:8: `She` may be insensitive, use `They`, `It` instead'
-    ],
-    'html() with deny and profanity config'
-  )
-
+  // Test MDX processing: Assumes four.mdx will be updated to "<Component>Privilege rules.</Component>"
   t.deepEqual(
     mdx(fourMdx).messages.map(String),
     [
-      '3:1-3:4: `She` may be insensitive, use `They`, `It` instead',
-      '3:32-3:38: Don’t use `asshat`, it’s profane',
-      '3:70-3:74: Be careful with `butt`, it’s profane in some cases'
+      '1:12-1:21: `privilege` may be woke, try `merit` instead'
     ],
     'mdx()'
   )
 
+  // Test MDX with allow array
   t.deepEqual(
-    mdx(fourMdx, ['butt']).messages.map(String),
-    [
-      '3:1-3:4: `She` may be insensitive, use `They`, `It` instead',
-      '3:32-3:38: Don’t use `asshat`, it’s profane'
-    ],
-    'mdx() with options'
+    mdx(fourMdx, ['privilege']).messages.map(String),
+    [],
+    'mdx() with allow array'
   )
 
+  // End the test suite
   t.end()
 })

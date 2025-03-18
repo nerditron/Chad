@@ -26,7 +26,7 @@ export function filter(options = {}) {
   }
 
   return remarkMessageControl({
-    name: 'alex',
+    name: 'chad',
     reset: Boolean(options.deny),
     enable: options.deny,
     disable: options.allow,
