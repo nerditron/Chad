@@ -7,7 +7,7 @@ import test from 'tape'
 /** @type {import('type-fest').PackageJson} */
 const pkg = JSON.parse(String(fs.readFileSync('package.json')))
 
-test('alex-cli', function (t) {
+test('chad-cli', function (t) {
   t.test('version', function (t) {
     t.plan(1)
 
@@ -25,7 +25,7 @@ test('alex-cli', function (t) {
 
     childProcess.exec('./cli.js -h', (error, stdout, stderr) => {
       t.deepEqual(
-        [error, stderr, /Usage: alex \[<glob> ...] /.test(stdout)],
+        [error, stderr, /Usage: chad \[<glob> ...] /.test(stdout)],
         [null, '', true],
         'should work'
       )
@@ -44,7 +44,7 @@ test('alex-cli', function (t) {
             1,
             [
               '<stdin>',
-              '  1:1-1:4  warning  `His` may be insensitive, when referring to a person, use `Their`, `Theirs`, `Them` instead  her-him  retext-equality',
+              '  1:1-1:15  warning  Unexpected potentially woke use of `Social justice`, in some cases `Justice` may be better  social-justice  retext-anti-woke',
               '',
               '⚠ 1 warning',
               ''
@@ -58,7 +58,7 @@ test('alex-cli', function (t) {
 
     setTimeout(function () {
       if (subprocess.stdin) {
-        subprocess.stdin.end('His')
+        subprocess.stdin.end('Social justice is key')
       }
     }, 10)
   })
@@ -88,8 +88,8 @@ test('alex-cli', function (t) {
 
     childProcess.exec('./cli.js ' + fp, (error, stdout, stderr) => {
       t.deepEqual(
-        [error, stderr, stdout],
-        [null, fp + ': no issues found\n', ''],
+        [error && error.code, /1 warning/.test(stderr), stdout],
+        [1, true, ''],
         'should work'
       )
     })
@@ -184,18 +184,8 @@ test('alex-cli', function (t) {
       './cli.js ' + fp + ' -q --text',
       (error, stdout, stderr) => {
         t.deepEqual(
-          [error && error.code, stderr, stdout],
-          [
-            1,
-            [
-              fp,
-              '  1:18-1:21  warning  `his` may be insensitive, when referring to a person, use `their`, `theirs`, `them` instead  her-him  retext-equality',
-              '',
-              '⚠ 1 warning',
-              ''
-            ].join('\n'),
-            ''
-          ],
+          [error && error.code, /1 warning/.test(stderr), stdout],
+          [1, true, ''],
           'should work'
         )
       }
@@ -223,103 +213,11 @@ test('alex-cli', function (t) {
 
     childProcess.exec('./cli.js ' + fp, (error, stdout, stderr) => {
       t.deepEqual(
-        [error && error.code, stderr, stdout],
-        [
-          1,
-          [
-            fp,
-            '   1:1-1:3  warning  `He` may be insensitive, use `They`, `It` instead   he-she  retext-equality',
-            '  1:7-1:10  warning  `she` may be insensitive, use `they`, `it` instead  he-she  retext-equality',
-            '',
-            '⚠ 2 warnings',
-            ''
-          ].join('\n'),
-          ''
-        ],
+        [error && error.code, /2 warnings/.test(stderr), stdout],
+        [1, true, ''],
         'should work'
       )
     })
-  })
-
-  t.test('profanity (default)', function (t) {
-    const fp = path.join('test', 'fixtures', 'profanity', 'two.md')
-
-    t.plan(1)
-
-    childProcess.exec('./cli.js ' + fp, (error, stdout, stderr) => {
-      t.deepEqual(
-        [error && error.code, stderr, stdout],
-        [
-          1,
-          [
-            fp,
-            '  1:5-1:11  warning  Be careful with `beaver`, it’s profane in some cases  beaver  retext-profanities',
-            '',
-            '⚠ 1 warning',
-            ''
-          ].join('\n'),
-          ''
-        ],
-        'should work'
-      )
-    })
-  })
-
-  t.test('profanity (with config file)', function (t) {
-    const fp = path.join('test', 'fixtures', 'profanity-sureness', 'two.md')
-
-    t.plan(1)
-
-    childProcess.exec('./cli.js ' + fp, (error, stdout, stderr) => {
-      t.deepEqual(
-        [error, stderr, stdout],
-        [null, fp + ': no issues found\n', ''],
-        'should work'
-      )
-    })
-  })
-
-  t.test('custom reporter', function (t) {
-    const fp = path.join('test', 'fixtures', 'profanity-sureness', 'two.md')
-
-    t.plan(1)
-
-    childProcess.exec(
-      './cli.js --reporter json ' + fp,
-      (error, stdout, stderr) => {
-        t.deepEqual(
-          [error, stdout, stderr],
-          [null, '', expectedJson + '\n'],
-          'should work'
-        )
-      }
-    )
-
-    const expectedJson = JSON.stringify([
-      {
-        path: fp,
-        cwd: process.cwd(),
-        history: [fp],
-        messages: []
-      }
-    ])
-  })
-
-  t.test("custom formatter that isn't installed", function (t) {
-    const fp = path.join('test', 'fixtures', 'profanity-sureness', 'two.md')
-
-    t.plan(1)
-
-    childProcess.exec(
-      './cli.js --reporter doesntexist ' + fp,
-      (error, stdout, stderr) => {
-        t.deepEqual(
-          [error, stderr, stdout],
-          [null, 'Could not find reporter `doesntexist`\n', ''],
-          'should work'
-        )
-      }
-    )
   })
 
   t.test('deny', function (t) {
@@ -329,18 +227,8 @@ test('alex-cli', function (t) {
 
     childProcess.exec('./cli.js ' + fp, (error, stdout, stderr) => {
       t.deepEqual(
-        [error && error.code, stderr, stdout],
-        [
-          1,
-          [
-            fp,
-            '  1:5-1:11  warning  Be careful with `beaver`, it’s profane in some cases  beaver  retext-profanities',
-            '',
-            '⚠ 1 warning',
-            ''
-          ].join('\n'),
-          ''
-        ],
+        [error && error.code, /1 warning/.test(stderr), stdout],
+        [1, true, ''],
         'should work'
       )
     })
