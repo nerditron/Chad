@@ -31,10 +31,9 @@ test('chad()', function (t) {
 
   // Test with allow array: Skip specific "woke" terms
   t.deepEqual(
-    alex(
-      'We must fight for social justice and address privilege.',
-      ['privilege']
-    ).messages.map(String),
+    alex('We must fight for social justice and address privilege.', [
+      'privilege'
+    ]).messages.map(String),
     [
       '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
     ],
@@ -43,10 +42,9 @@ test('chad()', function (t) {
 
   // Test with allow config: Same as above but with object syntax
   t.deepEqual(
-    alex(
-      'We must fight for social justice and address privilege.',
-      {allow: ['privilege']}
-    ).messages.map(String),
+    alex('We must fight for social justice and address privilege.', {
+      allow: ['privilege']
+    }).messages.map(String),
     [
       '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
     ],
@@ -55,10 +53,9 @@ test('chad()', function (t) {
 
   // Test with deny config: Only flag specified "woke" terms
   t.deepEqual(
-    alex(
-      'We must fight for social justice and address privilege.',
-      {deny: ['social-justice']}
-    ).messages.map(String),
+    alex('We must fight for social justice and address privilege.', {
+      deny: ['social-justice']
+    }).messages.map(String),
     [
       '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
     ],
@@ -67,10 +64,10 @@ test('chad()', function (t) {
 
   // Test error handling: Throw when both allow and deny are provided
   t.throws(function () {
-    alex(
-      'We must fight for social justice and address privilege.',
-      {allow: ['privilege'], deny: ['social-justice']}
-    )
+    alex('We must fight for social justice and address privilege.', {
+      allow: ['privilege'],
+      deny: ['social-justice']
+    })
   }, 'should throw an error with allow and deny config')
 
   // Verify markdown alias
@@ -90,10 +87,9 @@ test('chad()', function (t) {
 
   // Test plain text with allow array
   t.deepEqual(
-    text(
-      'We must fight for social justice and address privilege.',
-      ['privilege']
-    ).messages.map(String),
+    text('We must fight for social justice and address privilege.', [
+      'privilege'
+    ]).messages.map(String),
     [
       '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
     ],
@@ -102,10 +98,9 @@ test('chad()', function (t) {
 
   // Test plain text with allow config
   t.deepEqual(
-    text(
-      'We must fight for social justice and address privilege.',
-      {allow: ['privilege']}
-    ).messages.map(String),
+    text('We must fight for social justice and address privilege.', {
+      allow: ['privilege']
+    }).messages.map(String),
     [
       '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
     ],
@@ -114,10 +109,9 @@ test('chad()', function (t) {
 
   // Test plain text with deny config
   t.deepEqual(
-    text(
-      'We must fight for social justice and address privilege.',
-      {deny: ['social-justice']}
-    ).messages.map(String),
+    text('We must fight for social justice and address privilege.', {
+      deny: ['social-justice']
+    }).messages.map(String),
     [
       '1:19-1:33: Unexpected potentially woke use of `social justice`, in some cases `justice` may be better'
     ],
@@ -126,10 +120,10 @@ test('chad()', function (t) {
 
   // Test error handling in text()
   t.throws(function () {
-    text(
-      'We must fight for social justice and address privilege.',
-      {allow: ['privilege'], deny: ['social-justice']}
-    )
+    text('We must fight for social justice and address privilege.', {
+      allow: ['privilege'],
+      deny: ['social-justice']
+    })
   }, 'text() with allow and deny config')
 
   // Test HTML processing: Assumes three.html will be updated to "Class struggle persists."

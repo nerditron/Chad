@@ -16,6 +16,7 @@ import retextEnglish from 'retext-english'
 import remarkRetext from 'remark-retext'
 import rehypeRetext from 'rehype-retext'
 import vfileReporter from 'vfile-reporter'
+// @ts-ignore
 import retextAntiWoke from 'retext-anti-woke'
 import unifiedDiff from 'unified-diff'
 import {filter} from './filter.js'
@@ -138,10 +139,7 @@ engine(
  */
 function transform(options = {}) {
   /** @type {import('unified').PluggableList} */
-  let plugins = [
-    retextEnglish,
-    [retextAntiWoke, {noBinary: options.noBinary}]
-  ]
+  let plugins = [retextEnglish, [retextAntiWoke, {noBinary: options.noBinary}]]
 
   if (cli.flags.html) {
     plugins = [rehypeParse, [rehypeRetext, unified().use({plugins})]]

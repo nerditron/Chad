@@ -19,6 +19,7 @@ import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdx from 'remark-mdx'
 import rehypeParse from 'rehype-parse'
 import retextEnglish from 'retext-english'
+// @ts-ignore
 import retextAntiWoke from 'retext-anti-woke'
 import remarkRetext from 'remark-retext'
 import rehypeRetext from 'rehype-retext'
@@ -27,9 +28,7 @@ import {filter} from './filter.js'
 
 /** @param {TextOptions} options */
 function makeText(options) {
-  return unified()
-    .use(retextEnglish)
-    .use(retextAntiWoke, options)
+  return unified().use(retextEnglish).use(retextAntiWoke, options)
 }
 
 /**

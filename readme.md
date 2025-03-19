@@ -1,7 +1,7 @@
 <!--lint disable no-html first-heading-level no-shell-dollars-->
 
 <h1 align="center">
-  <img width="300" src="https://github.com/nerditron/Chad/media/logo-chad.svg" alt="chad">
+  <img width="300" src="https://github.com/nerditron/Chad/media/logo-Chad.png" alt="Chad">
   <br>
   <br>
 </h1>
@@ -18,7 +18,7 @@ favoring, polarizing, race related, or other **unequal** phrasing in text.
 For example, when `We’ve confirmed his identity` is given, **Chad** will warn
 you and suggest using `their` instead of `his`.
 
-Give **Chad** a spin on the [Online demo »][demo].
+Give **Chad** a spin on the \[Online demo »]\[demo].
 
 ## Why
 
@@ -43,7 +43,7 @@ $ yarn global add chad
 ```
 
 Or you can follow this step-by-step tutorial:
-[Setting up Chad in your project][setup-tutorial]
+\[Setting up Chad in your project]\[setup-tutorial]
 
 <!--chad disable woke-->
 
@@ -62,10 +62,10 @@ Or you can follow this step-by-step tutorial:
     *   [`html(value, config)`](#htmlvalue-config)
     *   [`text(value, config)`](#textvalue-config)
 *   [Workflow](#workflow)
+*   [Syncing with Upstream](#syncing-with-upstream)
 *   [FAQ](#faq)
-    *   [This is stupid!](#this-is-stupid)
-    *   [chad didn’t check “X”!](#chad-didnt-check-x)
-    *   [Why is this named chad?](#why-is-this-named-chad)
+    *   [Chad didn’t check “X”!](#chad-didnt-check-x)
+    *   [Why is this named Chad?](#why-is-this-named-chad)
 *   [Further reading](#further-reading)
 *   [Contribute](#contribute)
 *   [Origin story](#origin-story)
@@ -78,20 +78,23 @@ Or you can follow this step-by-step tutorial:
 
 *   Social justice terminology (if you write `systemic racism` Chad suggests `individual responsibility`)
 *   Communist rhetoric (if you write `wealth redistribution` Chad suggests `free market economics`)
-*   Far-left vocabulary (if you write `anti-capitalism` Chad suggests `market innovation`)
-*   Politically correct language (if you write `cultural appropriation` Chad suggests `cultural appreciation`)
-*   Woke buzzwords (if you write `privilege` Chad suggests `merit`; if you write `microaggression` Chad suggests `personal interaction`)
+*   Far-left vocabulary (if you write `anti-capitalism` Chad suggests
+    `market innovation`)
+*   Politically correct language (if you write `cultural appropriation`
+    Chad suggests `cultural appreciation`)
+*   Woke buzzwords (if you write `privilege` Chad suggests `merit`; if
+    you write `microaggression` Chad suggests `personal interaction`)
 *   Identity politics (if you write `intersectionality` Chad suggests `individual merit`)
 
 …and much more!
 
 Note: Chad assumes good intent: that you don’t mean to offend!
 
-See [`retext-anti-woke`][anti-woke] for all rules. Note: We've removed `retext-profanities` and `retext-equality` 
-as they didn't align with Chad's based mission.
+See [`retext-anti-woke`][anti-woke] for all rules.  Note: We’ve removed `retext-profanities` and `retext-equality`
+as they did’t align with Chad’s based mission.
 
-**Chad** ignores words meant literally, so `“climate change”`, `Climate Change — ...`, and [the
-like][literals] are not warned about.
+**Chad** ignores words meant literally, so `“climate change”`, `Climate Change — ...`,
+and [thelike][literals] are not warned about.
 
 ## Integrations
 
@@ -515,34 +518,42 @@ Using this workflow, you can merge PRs if it has warnings, and then if someone
 edits an entirely different file, they won’t be bothered about existing
 warnings, only about the things they added!
 
+## Syncing with Upstream
+
+It’s gross but we have to merge with `alex` to get updates.
+The process is like this:
+
+```shell
+git remote add upstream https://github.com/get-alex/alex.git
+git fetch upstream
+git merge upstream/main --no-ff
+```
+
+Resolve conflicts manually.
+
 ## FAQ
 
 <!--lint disable no-heading-punctuation-->
 
 <!--chad ignore wacko stupid-->
 
-### This is stupid!
-
-Not a question.
-And yeah, Chad isn’t very smart.
-People are much better at this.
-But people make mistakes, and Chad is there to help.
-
 ### Chad didn’t check “X”!
 
-See [`contributing.md`][contributing] on how to get “X” checked by Chad.
+See [`retext-anti-woke`][anti-woke] on how to get “X” checked by Chad.
 
 ### Why is this named Chad?
 
-Chad is based. Chad doesn't need an excuse.
+Chad is based.  Chad doesn’t need an excuse.
 
 <!--lint enable no-heading-punctuation-->
 
 ## Further reading
 
-No automated tool can replace a keen eye for woke terminology and understanding of merit-based principles.
+No automated tool can replace a keen eye for woke terminology and understanding
+of merit-based principles.
 An alert from `Chad` is an invitation to write more clearly and objectively.
-These resources can help you understand how to write with clarity and avoid ideological buzzwords:
+These resources can help you understand how to write with clarity and avoid
+ideological buzzwords:
 
 *   The [18F Content Guide](https://content-guide.18f.gov/our-style/inclusive-language/)
     has a helpful list of links to other inclusive language guides used in
@@ -579,18 +590,16 @@ These resources can help you understand how to write with clarity and avoid ideo
 
 ## Contribute
 
-See [`contributing.md`][contributing] in [`nerditron/Chad`][health] for ways
-to get started.
-See [`support.md`][support] for ways to get help.
-
 This project has a [Code of conduct][coc].
 By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## Origin story
 
-Chad is a based fork of alex, rewritten to combat the spread of woke language in technical documentation.
-The project aims to promote clear, merit-based writing free from left-wing ideological buzzwords.
+Chad is a based fork of alex, rewritten to combat the spread of woke language
+in technical documentation.
+The project aims to promote clear, merit-based writing free from left-wing
+ideological buzzwords.
 
 ## Acknowledgments
 
@@ -623,17 +632,11 @@ Special thanks to the retext-anti-woke contributors!
 
 [yarn]: https://yarnpkg.com/
 
-[setup-tutorial]: https://github.com/nerditron/Chad/blob/main/docs/setup.md
-
-[demo]: https://chad.nerditron.com/#demo
-
 [screenshot]: screenshot.png
 
 [vfile]: https://github.com/vfile/vfile
 
 [anti-woke]: https://github.com/nerditron/retext-anti-woke/blob/main/rules.md
-
-[equality]: https://github.com/retextjs/retext-equality/blob/main/rules.md
 
 [vfile-message]: https://github.com/vfile/vfile#vfilemessages
 
@@ -641,45 +644,13 @@ Special thanks to the retext-anti-woke contributors!
 
 [eslintignore]: http://eslint.org/docs/user-guide/configuring.html#ignoring-files-and-directories
 
-[anti-woke]: https://github.com/nerditron/retext-anti-woke
-
 [npm-scripts]: https://docs.npmjs.com/misc/scripts
 
 [ava]: http://ava.li
 
 [author]: http://wooorm.com
 
-[health]: https://github.com/nerditron/Chad
-
-[contributing]: https://github.com/nerditron/Chad/blob/main/contributing.md
-
-[support]: https://github.com/nerditron/Chad/blob/main/support.md
-
 [coc]: https://github.com/nerditron/Chad/blob/main/code-of-conduct.md
-
-[tweet]: https://twitter.com/kwuchu/status/618799087006130176
-
-[twitter]: https://twitter.com/wooorm/status/639123753490907136
-
-[producthunt]: https://www.producthunt.com/posts/alex
-
-[tnw]: http://thenextweb.com/apps/2015/09/11/alex-stops-you-from-publishing-inconsiderate-content/
-
-[vice]: https://www.vice.com/en_us/article/nzeawx/meet-alex-the-javascript-tool-to-make-your-code-less-offensive
-
-[bustle]: https://www.bustle.com/articles/108684-alex-javascript-tool-corrects-harmful-language-in-your-writing-because-there-are-some-mistakes-spell-check
-
-[dailydot]: https://www.dailydot.com/debug/alex-coding-tool-offensive/
-
-[iheany]: https://github.com/iheanyi
-
-[sindre]: https://github.com/sindresorhus
-
-[wooorm]: https://github.com/wooorm
-
-[preliminary]: https://github.com/nerditron/Chad/commit/initial
-
-[contributors]: https://github.com/nerditron/Chad/graphs/contributors
 
 [.chadignore]: .chadignore
 

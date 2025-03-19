@@ -1,7 +1,7 @@
 import childProcess from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
-import process from 'node:process'
+// Import process from 'node:process'
 import test from 'tape'
 
 /** @type {import('type-fest').PackageJson} */
@@ -234,7 +234,7 @@ test('chad-cli', function (t) {
     })
   })
 
-  /*t.test('default globs', function (t) {
+  /* T.test('default globs', function (t) {
     t.plan(1)
 
     childProcess.exec('./cli.js', (error, stdout, stderr) => {
@@ -244,7 +244,7 @@ test('chad-cli', function (t) {
         'should work'
       )
     })
-  })*/
+  }) */
 
   t.end()
 })
