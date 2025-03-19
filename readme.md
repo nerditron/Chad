@@ -1,7 +1,7 @@
 <!--lint disable no-html first-heading-level no-shell-dollars-->
 
 <h1 align="center">
-  <img width="300" src="https://github.com/nerditron/Chad/raw/main/media/logo-Chad.png" alt="Chad">
+  <img width="1192" src="https://github.com/nerditron/Chad/raw/main/media/logo-Chad.png" alt="Chad">
   <br>
   <br>
 </h1>
