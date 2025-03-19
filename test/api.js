@@ -136,7 +136,7 @@ test('chad()', function (t) {
   t.deepEqual(
     html(threeHtml).messages.map(String),
     [
-      '17:22-17:35: `class struggle` may be woke, try `economic competition` instead'
+      '8:8-8:22: Unexpected potentially woke use of `Class struggle`, in some cases `Competition` may be better'
     ],
     'html()'
   )
@@ -158,7 +158,9 @@ test('chad()', function (t) {
   // Test HTML with deny config
   t.deepEqual(
     html(threeHtml, {deny: ['class-struggle']}).messages.map(String),
-    ['17:22-17:35: `class struggle` may be woke, try `economic competition` instead'],
+    [
+      '8:8-8:22: Unexpected potentially woke use of `Class struggle`, in some cases `Competition` may be better'
+    ],
     'html() with deny config'
   )
 
@@ -171,7 +173,7 @@ test('chad()', function (t) {
   t.deepEqual(
     mdx(fourMdx).messages.map(String),
     [
-      '1:12-1:21: `privilege` may be woke, try `merit` instead'
+      '1:12-1:21: Unexpected potentially woke use of `Privilege`, in some cases `Merit` may be better'
     ],
     'mdx()'
   )

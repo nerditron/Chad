@@ -1,1 +1,1 @@
-We’ve confirmed `his` identity.
+Intersectionality is key.

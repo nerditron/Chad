@@ -14,3 +14,4 @@ To see Chad flag the “woke” terms, run:
 
 ```sh
 ./cli.js example.md
+```

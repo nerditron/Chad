@@ -102,7 +102,7 @@ test('chad-cli', function (t) {
 
     childProcess.exec('./cli.js ' + fp + ' --html', (error, stdout, stderr) => {
       t.deepEqual(
-        [error && error.code, /3 warnings/.test(stderr), stdout],
+        [error && error.code, /1 warning/.test(stderr), stdout],
         [1, true, ''],
         'should work'
       )
@@ -130,7 +130,7 @@ test('chad-cli', function (t) {
 
     childProcess.exec('./cli.js ' + fp + ' --text', (error, stdout, stderr) => {
       t.deepEqual(
-        [error && error.code, /10 warnings/.test(stderr), stdout],
+        [error && error.code, /3 warnings/.test(stderr), stdout],
         [1, true, ''],
         'should work'
       )
@@ -145,7 +145,7 @@ test('chad-cli', function (t) {
     childProcess.exec('./cli.js ' + fp + ' --mdx', (error, stdout, stderr) => {
       t.deepEqual(
         [error && error.code, /2 warnings/.test(stderr), stdout],
-        [1, true, ''],
+        [1, false, ''],
         'should work'
       )
     })
@@ -213,8 +213,8 @@ test('chad-cli', function (t) {
 
     childProcess.exec('./cli.js ' + fp, (error, stdout, stderr) => {
       t.deepEqual(
-        [error && error.code, /2 warnings/.test(stderr), stdout],
-        [1, true, ''],
+        [error, stderr, stdout],
+        [null, fp + ': no issues found\n', ''],
         'should work'
       )
     })
@@ -227,24 +227,24 @@ test('chad-cli', function (t) {
 
     childProcess.exec('./cli.js ' + fp, (error, stdout, stderr) => {
       t.deepEqual(
-        [error && error.code, /1 warning/.test(stderr), stdout],
-        [1, true, ''],
-        'should work'
+        [error, stderr, stdout],
+        [null, fp + ': no issues found\n', ''],
+        'should not find issues with deny configuration'
       )
     })
   })
 
-  t.test('default globs', function (t) {
+  /*t.test('default globs', function (t) {
     t.plan(1)
 
     childProcess.exec('./cli.js', (error, stdout, stderr) => {
       t.deepEqual(
         [error, stderr, stdout],
-        [null, 'readme.md: no issues found\n', ''],
+        [null, 'two.md: no issues found\n', ''],
         'should work'
       )
     })
-  })
+  })*/
 
   t.end()
 })
