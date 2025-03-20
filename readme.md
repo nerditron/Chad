@@ -30,22 +30,15 @@ Give **Chad** a spin on the \[Online demo »]\[demo].
 
 ## Install
 
-Using [npm][] (with [Node.js][node]):
+Because we're still in dev mode, ripping out parts of `alex`, it’s recommended
+to install like this:
 
 ```sh
-$ npm install chad --global
+git clone https://github.com/nerditron/Chad
+cd Chad
+npm install
+sudo npm link
 ```
-
-Using [yarn][]:
-
-```sh
-$ yarn global add chad
-```
-
-Or you can follow this step-by-step tutorial:
-\[Setting up Chad in your project]\[setup-tutorial]
-
-<!--chad disable woke-->
 
 ## Contents
 
@@ -98,19 +91,66 @@ and [thelike][literals] are not warned about.
 
 ## Integrations
 
-*   Sublime — [`nerditron/SublimeLinter-contrib-chad`](https://github.com/nerditron/SublimeLinter-contrib-chad)
-*   Gulp — [`nerditron/gulp-chad`](https://github.com/nerditron/gulp-chad)
-*   Slack — [`nerditron/chad-slack`](https://github.com/nerditron/chad-slack)
-*   Ember — [`nerditron/ember-cli-chad`](https://github.com/nerditron/ember-cli-chad)
-*   Probot — [`nerditron/linter-chad`](https://github.com/nerditron/linter-chad)
-*   GitHub Actions — [`nerditron/chad-recommends`](https://github.com/marketplace/actions/chad-recommends)
-*   GitHub Actions (reviewdog) — [`nerditron/action-chad`](https://github.com/marketplace/actions/run-chad-with-reviewdog)
-*   Vim — [`w0rp/ale`](https://github.com/w0rp/ale),
-    [`nerditron/coc-chad`](https://github.com/nerditron/coc-chad)
-*   Browser extension — [`nerditron/chad-browser-extension`](https://github.com/nerditron/chad-browser-extension)
-*   Contentful - [`nerditron/chad-js-contentful-ui-extension`](https://github.com/nerditron/chad-js-contentful-ui-extension)
-*   Figma - [`nerditron/figma-plugin-chad`](https://github.com/nerditron/figma-plugin-chad)
-*   VSCode - [`nerditron/vscode-chad`](https://github.com/nerditron/vscode-chad)
+### Vim
+
+You can use Chad in Vim with [ALE](https://github.com/dense-analysis/ale).
+After you install ALE, add this to your `.vimrc`.
+
+```
+" Description: Chad for markdown files
+call ale#linter#Define('markdown', {
+ \   'name': 'chad',
+ \   'executable': 'chad',
+ \   'command': 'chad %s -t',
+ \   'output_stream': 'stderr',
+ \   'callback': 'ale#handlers#alex#Handle',
+ \   'lint_file': 1,
+ \})
+```
+
+Optionally, you can specify Chad as a linter for certain files but
+this might not me necessary.
+
+```
+let g:ale_linters = { 'markdown': ['chad']}
+```
+
+You can also set Chad up to work with files besides markdown.
+
+```
+" Chad for asciidoc files
+ call ale#linter#Define('help', {
+ \   'name': 'chad',
+ \   'executable': 'chad',
+ \   'command': 'chad %s -t',
+ \   'output_stream': 'stderr',
+ \   'callback': 'ale#handlers#alex#Handle',
+ \   'lint_file': 1,
+ \})
+
+" Chad for HTML files
+ call ale#linter#Define('html', {
+ \   'name': 'chad',
+ \   'executable': 'chad',
+ \   'command': 'chad %s -t',
+ \   'output_stream': 'stderr',
+ \   'callback': 'ale#handlers#alex#Handle',
+ \   'lint_file': 1,
+ \})
+
+ " Chad for rst files
+ call ale#linter#Define('rst', {
+ \   'name': 'chad',
+ \   'executable': 'chad',
+ \   'command': 'chad %s -t',
+ \   'output_stream': 'stderr',
+ \   'callback': 'ale#handlers#alex#Handle',
+ \   'lint_file': 1,
+ \})
+```
+
+[See more options](https://github.com/dense-analysis/ale/commit/771581a945c677a96ccb33f17c8892de42a5e939)
+[Master solution](https://github.com/dense-analysis/ale/blob/771581a945c677a96ccb33f17c8892de42a5e939/autoload/ale/handlers/alex.vim)
 
 ## Ignoring files
 
