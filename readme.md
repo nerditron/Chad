@@ -30,7 +30,7 @@ Give **Chad** a spin on the \[Online demo »]\[demo].
 
 ## Install
 
-Because we're still in dev mode, ripping out parts of `alex`, it’s recommended
+Because we’re still in dev mode, ripping out parts of `alex`, it’s recommended
 to install like this:
 
 ```sh
@@ -44,6 +44,7 @@ sudo npm link
 
 *   [Checks](#checks)
 *   [Integrations](#integrations)
+    *   [Vim](#vim)
 *   [Ignoring files](#ignoring-files)
     *   [`.chadignore`](#chadignore)
 *   [Control](#control)
@@ -96,7 +97,7 @@ and [thelike][literals] are not warned about.
 You can use Chad in Vim with [ALE](https://github.com/dense-analysis/ale).
 After you install ALE, add this to your `.vimrc`.
 
-```
+```vim
 " Description: Chad for markdown files
 call ale#linter#Define('markdown', {
  \   'name': 'chad',
@@ -111,13 +112,13 @@ call ale#linter#Define('markdown', {
 Optionally, you can specify Chad as a linter for certain files but
 this might not me necessary.
 
-```
+```vim
 let g:ale_linters = { 'markdown': ['chad']}
 ```
 
 You can also set Chad up to work with files besides markdown.
 
-```
+```vim
 " Chad for asciidoc files
  call ale#linter#Define('help', {
  \   'name': 'chad',
@@ -132,7 +133,7 @@ You can also set Chad up to work with files besides markdown.
  call ale#linter#Define('html', {
  \   'name': 'chad',
  \   'executable': 'chad',
- \   'command': 'chad %s -t',
+ \   'command': 'chad %s -l',
  \   'output_stream': 'stderr',
  \   'callback': 'ale#handlers#alex#Handle',
  \   'lint_file': 1,
@@ -149,8 +150,8 @@ You can also set Chad up to work with files besides markdown.
  \})
 ```
 
-[See more options](https://github.com/dense-analysis/ale/commit/771581a945c677a96ccb33f17c8892de42a5e939)
-[Master solution](https://github.com/dense-analysis/ale/blob/771581a945c677a96ccb33f17c8892de42a5e939/autoload/ale/handlers/alex.vim)
+*   [See more options](https://github.com/dense-analysis/ale/commit/771581a945c677a96ccb33f17c8892de42a5e939)
+*   [Master solution](https://github.com/dense-analysis/ale/blob/771581a945c677a96ccb33f17c8892de42a5e939/autoload/ale/handlers/alex.vim)
 
 ## Ignoring files
 
@@ -666,11 +667,7 @@ Special thanks to the retext-anti-woke contributors!
 
 [first-timers-badge]: https://img.shields.io/badge/first--timers--only-friendly-blue.svg
 
-[node]: https://nodejs.org/en/download/
-
 [npm]: https://docs.npmjs.com/cli/install
-
-[yarn]: https://yarnpkg.com/
 
 [screenshot]: screenshot.png
 
