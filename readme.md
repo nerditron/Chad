@@ -12,13 +12,8 @@
 [![Coverage][coverage-badge]][coverage]
 [![First timers friendly][first-timers-badge]][first-timers]
 
-Whether your own or someone else’s writing, **Chad** helps you find gender
-favoring, polarizing, race related, or other **unequal** phrasing in text.
-
-For example, when `We’ve confirmed his identity` is given, **Chad** will warn
-you and suggest using `their` instead of `his`.
-
-Give **Chad** a spin on the \[Online demo »]\[demo].
+Chad is a fork of [alex](https://github.com/get-alex/alex) that does the
+opposite of what alex does.
 
 ## Why
 
