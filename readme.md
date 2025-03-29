@@ -39,6 +39,7 @@ sudo npm link
 
 *   [Checks](#checks)
 *   [Integrations](#integrations)
+    *   [Browser extension](#browser-extension)
     *   [Vim](#vim)
 *   [Ignoring files](#ignoring-files)
     *   [`.chadignore`](#chadignore)
@@ -86,6 +87,12 @@ as they did’t align with Chad’s based mission.
 and [thelike][literals] are not warned about.
 
 ## Integrations
+
+### Browser extension
+
+Works with Chrome-based browsers or Firefox.
+
+[chad-browser-extension](https://github.com/nerditron/chad-browser-extension)
 
 ### Vim
 
